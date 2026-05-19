@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九零年代全球金融危機學習網</title>
+    <!-- 引入 Tailwind CSS 進行快速響應式排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 自定義樣式補充 */
+        html { scroll-behavior: smooth; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        .faq-answer.open {
+            max-height: 500px; /* 足夠容納內容的高度 */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .rotate-180 { transform: rotate(180deg); }
+        
+        /* 漸層背景 */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- 導覽列與搜尋框 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-4">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fa-solid fa-earth-americas text-blue-600 text-3xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-900">資本與金融危機 <span class="text-sm font-normal text-gray-500 hidden sm:inline-block">| 學生專屬知識庫</span></h1>
+                </div>
+                
+                <!-- 搜尋框 -->
+                <div class="w-full md:w-1/3 relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-search text-gray-400"></i>
+                    </div>
+                    <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out" placeholder="搜尋：索羅斯、熱錢、墨西哥...">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 橫幅 Hero Section -->
+    <header class="hero-gradient text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">資本是如何引爆全球金融危机的？</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-blue-100 leading-relaxed">
+                1994 年底到 1998 年短暫的四年閒，墨西哥、南亞、韓國、俄羅斯等數十個國家接連出現金融危機。這背後有一條統一的脈絡主線：資本流動的邏輯。透過本站，快速掌握 90 年代這場席捲全球的經濟風暴。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- 搜尋無結果提示 -->
+        <div id="noResults" class="hidden text-center py-8">
+            <i class="fa-regular fa-face-frown-open text-5xl text-gray-300 mb-4"></i>
+            <h3 class="text-xl font-medium text-gray-600">找不到相關內容</h3>
+            <p class="text-gray-500 mt-2">請嘗試使用其他關鍵字，例如「華盛頓共識」或「泰國」。</p>
+        </div>
+
+        <!-- 資源庫 (Knowledge Base) -->
+        <section id="knowledgeSection" class="mb-16">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 border-l-4 border-blue-600 pl-4">核心知識資源庫</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cardContainer">
+                
+                <!-- 卡片 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-blue-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-file-contract text-5xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-100 mb-3">背景概念</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">華盛頓共識 (1989)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            美國在 1989 年提出的共識，核心思想是「金融自由化」。主張國家在貨幣、貿易、資本流動、產業上全面自由化，讓無形的手調控，減少政府限制，吸引美國資本進入高收益的新興市場。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 卡片 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-green-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-money-bill-wave text-5xl text-green-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-100 mb-3">核心名詞</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">熱錢 (Hot Money)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            像熱鍋上的螞蟻一樣到處亂竄的短期資本。熱錢不關心國家的長期經濟發展，只追求短期內的高回報（主要投入金融和房地產），其特點是「來得快，跑得更快」，極易引發信貸泡沫與崩盤。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 卡片 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-red-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-skull-crossbones text-5xl text-red-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-100 mb-3">歷史事件</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">墨西哥比索危機 (1994)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            墨西哥放開資本管制並將比索與美元綁定。1994年美聯儲加息，外資撤退。墨西哥被迫發行高息美元短期債，最終外匯耗盡，比索暴跌脫鉤。最後由 IMF 提供 500 億美元緊急救助收場，但也埋下了「道德風險」。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 卡片 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-purple-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-chart-line text-5xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-600 bg-purple-100 mb-3">歷史事件</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">泰銖崩盤與亞洲金融危機 (1997)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            日本熱錢大量湧入東南亞後因國內法規收緊而撤退。索羅斯與老虎基金趁機做空泰銖，高盛發布貶值報告引發恐慌。泰國耗盡外匯儲備後於 1997 年 7 月宣布泰銖與美元脫鉤，引發菲律賓、馬來西亞、印尼、韓國連鎖崩盤。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 卡片 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-yellow-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-shield-halved text-5xl text-yellow-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-600 bg-yellow-100 mb-3">歷史事件</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">香港金融保衛戰 (1997-1998)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            空頭多次狙擊實行固定匯率的港幣，透過「做空港幣推高利率 -> 利率漲導致股市跌」的策略雙線做空。1998年8月，香港金管局破天荒直接動用外匯儲備大量買入港股與空單，成功逼退空頭，守住金融地位。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 卡片 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 searchable-item flex flex-col">
+                    <div class="bg-orange-100 p-4 flex justify-center">
+                        <i class="fa-solid fa-snowman text-5xl text-orange-600"></i>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-orange-600 bg-orange-100 mb-3">歷史事件</span>
+                        <h3 class="text-xl font-bold mb-2 item-title">俄羅斯盧布違約 (1998)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed item-content">
+                            受亞洲危機恐慌及油價暴跌影響，外資瘋狂拋售俄羅斯短期國債 (GKO)。國債利率飆升至 150%。1998年8月17日，俄羅斯宣布盧布貶值且債務違約，間接導致美國最大對沖基金 LTCM 暴雷。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ 常見問題區域 -->
+        <section id="faqSection" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 border-l-4 border-indigo-600 pl-4 mb-8">常見問題 (FAQ)</h2>
+            <div class="bg-white rounded-xl shadow-md p-6" id="faqContainer">
+                
+                <!-- FAQ 1 -->
+                <div class="border-b border-gray-200 py-4 searchable-item">
+                    <button class="faq-btn w-full flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="text-lg font-semibold text-gray-800 item-title">為什麼泰國、韓國等國家會被空頭盯上？</h4>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content faq-answer text-gray-600 item-content">
+                        索羅斯等空頭特別喜歡尋找**實行「固定匯率」（與美元綁定）**且內部已出現信貸問題的國家。這類國家的政府為了維持匯率，會消耗外匯儲備死撐。空頭的風險很小（就算沒做空成功，匯率不變也不會大虧），但一旦攻擊成功迫使匯率脫鉤暴跌，空頭就能獲取暴利。
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border-b border-gray-200 py-4 searchable-item">
+                    <button class="faq-btn w-full flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="text-lg font-semibold text-gray-800 item-title">IMF (國際貨幣基金組織) 在危機中扮演了什麼角色？造成了什麼反效果？</h4>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content faq-answer text-gray-600 item-content">
+                        IMF 在墨西哥危機和亞洲金融危機中提供了數百億美元的緊急救助貸款。然而，它輕易救下墨西哥，產生了**「道德風險」**：讓國際資本誤以為投資高風險的新興市場有 IMF 兜底，變相鼓勵了資本更加肆無忌憚地湧入東南亞，為後來的危機埋下伏筆。且其後續救助條件嚴苛，導致受助國經濟緊縮、大量失業。
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border-b border-gray-200 py-4 searchable-item">
+                    <button class="faq-btn w-full flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="text-lg font-semibold text-gray-800 item-title">日本的銀行在這場亞洲危機中做了什麼？</h4>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content faq-answer text-gray-600 item-content">
+                        90年代日本央行放水、利率極低，且日元升值。日本的銀行以低成本融資，將海量資金（熱錢）投入東南亞獲取高利息，成為泰國等國最大的債主。後來因日本國內經濟泡沫破裂、銀行壞帳累積，政府嚴格限制投資規模，導致日本熱錢迅速從東南亞撤離，直接抽乾了這些國家的現金流。
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border-b border-gray-200 py-4 searchable-item">
+                    <button class="faq-btn w-full flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="text-lg font-semibold text-gray-800 item-title">這一切都說明「資本是萬惡的」嗎？</h4>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content faq-answer text-gray-600 item-content">
+                        不是這麼簡單。資本是一個抽象概念，其中的每一個體（如養老金、投行、對沖基金）只是追求自身利益最大化，甚至他們彼此之間的利益是衝突的（例如已經投資當地的資本最不希望國家崩盤）。這系列危機給我們的教訓是：**越自由的市場，需要配備越完善、越嚴格的監管**。過度的資本自由若無保障，就像不受保護的野孩子在大馬路上跑，必然引發災難。
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <i class="fa-solid fa-book-open-reader text-3xl mb-4 text-blue-400"></i>
+            <p class="text-gray-400 text-sm">本網站內容專為學生學習設計，資料整理自《資本是如何引爆全球金融危机的？》文本。</p>
+            <p class="text-gray-500 text-xs mt-2">&copy; 2026 金融歷史學習資源庫 | 僅供學術與學習用途</p>
+        </div>
+    </footer>
+
+    <!-- 互動邏輯 (JavaScript) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- FAQ 手風琴展開/收合邏輯 ---
+            const faqButtons = document.querySelectorAll('.faq-btn');
+            
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    
+                    // 切換當前的狀態
+                    const isOpen = content.classList.contains('open');
+                    
+                    // 若要設定每次只打開一個，可解除下方程式碼註解
+                    /*
+                    document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('.faq-btn i').forEach(i => i.classList.remove('rotate-180'));
+                    */
+
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.remove('open');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+            // --- 即時搜尋邏輯 ---
+            const searchInput = document.getElementById('searchInput');
+            const searchableItems = document.querySelectorAll('.searchable-item');
+            const noResultsMsg = document.getElementById('noResults');
+            
+            // 監聽輸入框事件
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                searchableItems.forEach(item => {
+                    // 獲取標題與內容文本
+                    const title = item.querySelector('.item-title').textContent.toLowerCase();
+                    const content = item.querySelector('.item-content').textContent.toLowerCase();
+                    
+                    // 比對關鍵字
+                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                        item.style.display = ''; // 顯示元素
+                        visibleCount++;
+                        
+                        // 如果是 FAQ 且有搜尋關鍵字，自動展開以利閱讀 (當搜尋詞不為空時)
+                        if(searchTerm !== '' && item.querySelector('.faq-content')) {
+                           item.querySelector('.faq-content').classList.add('open');
+                           item.querySelector('i.fa-chevron-down').classList.add('rotate-180');
+                        } else if (searchTerm === '' && item.querySelector('.faq-content')) {
+                           item.querySelector('.faq-content').classList.remove('open');
+                           item.querySelector('i.fa-chevron-down').classList.remove('rotate-180');
+                        }
+                    } else {
+                        item.style.display = 'none'; // 隱藏元素
+                    }
+                });
+
+                // 處理各區塊如果全空的情況
+                const cardsVisible = Array.from(document.querySelectorAll('#cardContainer .searchable-item')).some(item => item.style.display !== 'none');
+                const faqsVisible = Array.from(document.querySelectorAll('#faqContainer .searchable-item')).some(item => item.style.display !== 'none');
+
+                document.getElementById('knowledgeSection').style.display = cardsVisible ? 'block' : 'none';
+                document.getElementById('faqSection').style.display = faqsVisible ? 'block' : 'none';
+
+                // 顯示/隱藏 無結果提示
+                if (visibleCount === 0) {
+                    noResultsMsg.classList.remove('hidden');
+                } else {
+                    noResultsMsg.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
